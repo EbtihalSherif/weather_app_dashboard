@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import WeatherMain from './components/WeatherMain/WeatherMain';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import WeatherDashboard from './components/WeatherDashboard/WeatherDashboard';
+import { Container, Row, Col ,Navbar,Nav} from 'react-bootstrap';
+ function App() {
   return (
+    <Router>
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/* <Navbar bg="dark" expand="lg">
+          <Container>
+            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link to="/">Landing</Nav.Link>
+                <Nav.Link to="/dashboard">dashboard</Nav.Link>
+                
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar> */}
+      <Routes>
+         
+          <Route path='/' element={<WeatherMain />}></Route>
+          <Route path="/dashboard" element={<WeatherDashboard/>} />
+
+      </Routes>
     </div>
+      </Router>
+
   );
 }
 

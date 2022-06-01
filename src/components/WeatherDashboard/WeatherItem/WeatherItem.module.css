@@ -1,0 +1,39 @@
+.weathercard {
+    box-shadow: var(--boxShadow);
+    border-radius: 10px;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    max-width: 150px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    background-color: var(--gray);
+    transition: all 0.3s ease 0s;
+}
+
+@media (max-width: 600px) {
+    .weathercard {
+        font-size: 10px;
+        gap: 0.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .weathercard {
+        flex-basis: 33%;
+    }
+}
+
+.weathercardicon {
+    font-size: 25px;
+}
+
+.weathercardactive {
+    transform: scale(1.05);
+    background: var(--black);
+    color: var(--glass);
+    background-color: grey;
+}

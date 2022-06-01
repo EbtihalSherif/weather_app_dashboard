@@ -1,0 +1,116 @@
+.wrapper {
+  font-size: 16px;
+  color: #666;
+  padding: 25px;
+}
+.barChart {
+    width: 50%;
+  margin-right: 0;
+}
+.barChart .axisLeft line {
+  stroke-width: 0.5;
+  stroke: rgba(0, 0, 0, 0.5);
+}
+.barChart .axisLeft path {
+  display: none;
+}
+.barChart .axisBottom line, .barChart .axisBottom path {
+  display: none;
+}
+.barChart text {
+  fill: white;
+}
+
+svg {
+  overflow: visible;
+}
+
+text {
+  fill: gainsboro;
+  color: gainsboro;
+  font-size: 16px;
+}
+
+.subtitle text {
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.axis .domain,
+.axis.xAxis line {
+  display: none;
+}
+
+.lineChart {
+  width: 50%;
+  margin-left: 0;
+}
+
+.lineChart .axisLeft line {
+  stroke-width: 0.5;
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.lineChart .axisLeft path {
+  display: none;
+}
+
+.lineChart .axisBottom line,
+.lineChart .axisBottom path {
+  display: none;
+}
+
+.lineChart text {
+  fill: white;
+}
+.area {
+  fill: url(#area-gradient);
+}
+
+.rectOverlayLineChart {
+  fill: rgba(255, 255, 255, 0.1);
+}
+
+.rectOverlayBarChart {
+  fill: rgba(255, 255, 255, 0.1);
+}
+
+.chartContainer {
+  background: rgba(73, 71, 71, 0.7);
+  border-radius: 30px;
+  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--bg-color--card);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 567px) {
+  .chartContainer {
+    flex-basis: 100%;
+    justify-content: center;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 567px) {
+  .lineChart {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 567px) {
+  .barChart {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
