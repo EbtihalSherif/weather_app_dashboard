@@ -23,6 +23,7 @@ const useForecast = () => {
 
     const fetchData = async (location = null) => {
 
+        try{
         if (!location) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 setLatLong(position.coords.latitude + ',' + position.coords.longitude);
@@ -30,6 +31,7 @@ const useForecast = () => {
         }
         if (latLong != null || location != null) {
 
+            
             let { data } = await axios(Wetaher_Api_URL,
                 {
                     params:
@@ -55,8 +57,9 @@ const useForecast = () => {
             // }).catch(e => {
             //     console.log(e);
             // })
-            console.log("Latitude is:", latLong)
-            if (!data || data.length === 0) {
+
+            
+            if (data.error) {
                 setError('Something went wrong');
                 setLoading(false);
 
@@ -64,12 +67,18 @@ const useForecast = () => {
             }
 
             setData(data.data)
-
            //  dispatch(setWeather(data.data))
             console.log(data);
             return data.data;
 
+        }}
+        catch(e){
+                console.log(e);
+            setError('Something went wrong');
+            setLoading(false);
+
         }
+        return;
 
 
     }
@@ -93,7 +102,10 @@ const useForecast = () => {
 
 
         const data = await fetchData(location);
-        if (!data) return;
+        if (!data||data.error) {
+            setLoading(false);
+            setError('something went wrong');
+            return};
 
         gatherForecastData(data);
     };

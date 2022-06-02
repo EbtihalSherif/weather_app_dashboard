@@ -10,7 +10,16 @@
     width: 45%;
     height: 40px;
 }
+.heading {
+    padding: 2rem;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+}
 
+.light {
+    font-weight: 100;
+}
 .button {
     border: none;
     border-radius: var(--main-border-radius);
@@ -24,6 +33,7 @@
     line-height: initial;
     width: 30%;
     height: 38px;
+
 }
 
 .button:hover {

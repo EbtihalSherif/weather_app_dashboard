@@ -1,3 +1,7 @@
 .error {
-    bottom: 0;
+    bottom: 50%;
+    text-align: center;
+    align-items: center;
+margin-left:37%;
+margin-right: auto;    
 }

@@ -54,26 +54,25 @@ const CitiesForecast = ({ country, currentCity }) => {
     return (
         <div>
 
-            <div>
+            <div className={styles.heading}>
                 explore weather of {country} cities
             </div>
 
 
-            {AllCities.length > 0 &&
+          
                 <div>
 
-                    <input type="text" id="txtAutoComplete" list="languageList" className={styles.select} onChange={handleSelectedCity} value={Weatherdata.selectedCity} />
-                    <datalist id="languageList">
+                    <input type="text" id="txtAutoComplete" list="citiesList" className={styles.select} onChange={handleSelectedCity}  />
+                    {AllCities.length > 0 && <datalist id="citiesList">
                         {
                             AllCities.map((city, y) =>
                                 <option key={y} value={city}>{city}</option>)
                         }
 
-                    </datalist>
+                    </datalist>}
 
-                </div>}
-            <button type="submit" className={styles.button} onClick={dashboard}>
-                Extended Forecast            </button>
+                </div>
+            <button type="submit" className={styles.button} onClick={dashboard}>Extended Forecast </button>
         </div>
     );
 }

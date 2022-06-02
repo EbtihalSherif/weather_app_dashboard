@@ -1,5 +1,5 @@
 import React from 'react'
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Header from '../Header/Header';
 import { useEffect, useState } from 'react';
 import useForecast from '../../hooks/useForecast'
@@ -15,7 +15,7 @@ export default function WeatherDashboard() {
   const { isError, isLoading, forecast, hourlyRate, data, getWeatherInfo } = useForecast();
   const [selected, setSelected] = useState(0);
   const cityName = useSelector((state) => state.Reducer)
- 
+
   useEffect(() => {
 
     const fetchData = async () => {
@@ -36,19 +36,21 @@ export default function WeatherDashboard() {
       // }
     }
     fetchData();
-    
+
   }, []);
 
 
   return (
     <React.Fragment>
       <Header />
-      {isLoading && <Loader />}
-      {isError && <Error />}
+      {!forecast && (
+        <div className={styles.weathercontainer}>  {isLoading && <Loader />}
+          {isError && <Error />}
+        </div>)}
       {forecast &&
 
         <div className={styles.weathercontainer}>
-              <CurrentDayForecast {...forecast.currentDay} currentDayDetails={forecast.currentDayDetails} AllowDetailedView={true}/>
+          <CurrentDayForecast {...forecast.currentDay} currentDayDetails={forecast.currentDayDetails} AllowDetailedView={true} />
 
           <div className={styles.weatherlistcard}>
             {forecast.upcomingDays?.map((item, index) => (
@@ -60,15 +62,14 @@ export default function WeatherDashboard() {
                 onChangeSelected={setSelected}
               />
             ))}
-
           </div>
 
           {hourlyRate &&
-          <div>
-             <ChartWeather selectedDayIndex={selected} dataDay={hourlyRate} />
+            <div>
+              <ChartWeather selectedDayIndex={selected} dataDay={hourlyRate} />
             </div>}
 
-          
+
         </div>
       }
     </React.Fragment>
