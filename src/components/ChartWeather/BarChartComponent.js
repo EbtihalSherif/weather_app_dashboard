@@ -1,30 +1,27 @@
 import * as d3 from "d3";
 import "./chartWeather.css";
-
-
 import XYAxisBarChart from "./XYAxisBarChart";
 import Bar from "./Bar";
 
-const BarChartComponent = ({ width, dataDay, selectedDayIndex }) => {
 
-
+const BarChartComponent = ({ width, dataDay }) => {
     const margins = {
-        top: 50, right: 40, bottom: 50, left: 20
+        top: 50, right: 20, bottom: 50, left: 20
     }, views = {
-        smallView: (width - margins.left - margins.right) / 2,
-        largeView: (width - margins.left - margins.right)
+        smallViewWidth: (width - margins.left - margins.right) ,
+        largeViewWidth: (width - margins.left - margins.right)/2,
+        smallViewHeight: (400 - margins.top - margins.bottom) ,
+        largeViewHeight: (500 - margins.top - margins.bottom)
     },
 
         svgDimensions = {
-            width: width < 567 ? views.largeView : views.smallView,
-            height: 500 - margins.top - margins.bottom
+            width: width < 567 ? views.smallViewWidth : views.largeViewWidth,
+            height: width < 567 ? views.smallViewHeight : views.largeViewHeight
         };
 
 
     const data = dataDay
-    // states.dayHourlyRate[selectedDayIndex]
-    // console.log(data)
-
+    
     const yMaxValue = Math.max(...data.map(d => d.humidity));
 
 

@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import useForecast from '../../hooks/useForecast'
 
 import styles from './WeatherDasboard.module.css'
-import WeatherItem from './WeatherItem/WeatherItem'
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error'
 import ChartWeather from '../ChartWeather/ChartWeather';
 import CurrentDayForecast from '../CurrentDayForecast/CurrentDayForecast';
+import UpcomingDays from '../UpcomingDaysForecast/UpcomingDays';
+
 export default function WeatherDashboard() {
 
   const { isError, isLoading, forecast, hourlyRate, data, getWeatherInfo } = useForecast();
@@ -21,7 +22,6 @@ export default function WeatherDashboard() {
     const fetchData = async () => {
       if (cityName.selectedCity) {
         await getWeatherInfo(cityName.selectedCity)
-        // dispatch(setHourlyRate(hourlyRate))
       }
 
       else {
@@ -30,14 +30,10 @@ export default function WeatherDashboard() {
         });
       }
 
-
-      // if (hourlyRate) {
-      //   dispatch(setHourlyRate(hourlyRate))
-      // }
     }
     fetchData();
 
-  }, []);
+  }, [cityName.selectedCity]);
 
 
   return (
@@ -52,17 +48,9 @@ export default function WeatherDashboard() {
         <div className={styles.weathercontainer}>
           <CurrentDayForecast {...forecast.currentDay} currentDayDetails={forecast.currentDayDetails} AllowDetailedView={true} />
 
-          <div className={styles.weatherlistcard}>
-            {forecast.upcomingDays?.map((item, index) => (
-              <WeatherItem
-                key={index}
-                day={index}
-                weatherData={item}
-                active={selected === index}
-                onChangeSelected={setSelected}
-              />
-            ))}
-          </div>
+          {forecast.upcomingDays && <div className={styles.weatherlistcard}>
+            <UpcomingDays days={forecast.upcomingDays} selected={selected} setSelected={setSelected}/>
+          </div>}
 
           {hourlyRate &&
             <div>

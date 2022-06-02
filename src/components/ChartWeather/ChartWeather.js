@@ -40,7 +40,7 @@ export default function ChartWeather({ selectedDayIndex, dataDay }) {
 
   return (
     <div>
-      <h3>Temperature Dashboard</h3>
+      <div className="heading">Temperature Dashboard</div>
       <div ref={svgContainer} className="chartContainer">
         <div className="lineChart">
           {dataDay && <LineChartGenerator width={width} dataDay={dataDay[selectedDayIndex]}/>}

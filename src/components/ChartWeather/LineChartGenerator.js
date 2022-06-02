@@ -7,25 +7,25 @@ import Area from './Area'
 import XYAxisLineChart from './XYAxisLineChart'
 
 
-const LineChartGenerator = ({ width, dataDay, selectedDayIndex }) => {
+const LineChartGenerator = ({ width, dataDay }) => {
 
 
 
     const margins = {
         top: 50, right: 20, bottom: 50, left: 20
-    },views={
-        smallView: (width - margins.left - margins.right) / 2,
-        largeView: (width - margins.left - margins.right) 
+    }, views = {
+        smallViewWidth: (width - margins.left - margins.right),
+        largeViewWidth: (width - margins.left - margins.right) / 2,
+        smallViewHeight: (400 - margins.top - margins.bottom),
+        largeViewHeight: (500 - margins.top - margins.bottom) 
     },
 
         svgDimensions = {
-            width: width<567?views.largeView:views.smallView,
-            height: 500 - margins.top - margins.bottom
+            width: width < 567 ? views.smallViewWidth : views.largeViewWidth,
+            height: width < 567 ? views.smallViewHeight : views.largeViewHeight
         };
-
     const data = dataDay
-    // states.dayHourlyRate[selectedDayIndex]
-    // console.log(data)
+   
     let i = 0
     let timeIntervals = []
     data.map(day => {
@@ -34,7 +34,6 @@ const LineChartGenerator = ({ width, dataDay, selectedDayIndex }) => {
         i += 3
     }
     )
-    //setChartdata(data)
 
 
     const xScaleMinValue = Math.min(...data.map(d => d.time));
@@ -55,7 +54,10 @@ const LineChartGenerator = ({ width, dataDay, selectedDayIndex }) => {
 
 
     var text = (
-        <text className="" transform="translate(20,20)rotate(0)" fontSize="13"> temperature Hourly Rate </text>
+        <text  transform="translate(20,20)rotate(0)" fontSize="13"> temperature Hourly Rate </text>
+    )
+    var xAxisLabel = (
+        <text transform="translate(20,20)rotate(0)" fontSize="13"> temperature Hourly Rate </text>
     )
     var rectOverlay = <rect transform={`translate(${margins.left / 2},${margins.top / 2})`} className="rectOverlayLineChart" width={svgDimensions.width - margins.right
     } height={svgDimensions.height - margins.top

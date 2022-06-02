@@ -38,7 +38,7 @@ const CitiesForecast = ({ country, currentCity }) => {
         console.log(selectedCountry)
         // search(country, AllCountries)
         setCountryCode(selectedCountry.isoCode)
-        const cities = City.getCitiesOfCountry(selectedCountry.isoCode)
+       // const cities = City.getCitiesOfCountry(selectedCountry.isoCode)
         setCities(selectedCountry)
     }, []);
 
@@ -57,21 +57,18 @@ const CitiesForecast = ({ country, currentCity }) => {
             <div className={styles.heading}>
                 explore weather of {country} cities
             </div>
+            <div>
 
+                <input type="text" id="txtAutoComplete" list="citiesList" className={styles.select} onChange={handleSelectedCity} />
+                {AllCities.length > 0 && <datalist id="citiesList">
+                    {
+                        AllCities.map((city, y) =>
+                            <option key={y} value={city}>{city}</option>)
+                    }
 
-          
-                <div>
+                </datalist>}
 
-                    <input type="text" id="txtAutoComplete" list="citiesList" className={styles.select} onChange={handleSelectedCity}  />
-                    {AllCities.length > 0 && <datalist id="citiesList">
-                        {
-                            AllCities.map((city, y) =>
-                                <option key={y} value={city}>{city}</option>)
-                        }
-
-                    </datalist>}
-
-                </div>
+            </div>
             <button type="submit" className={styles.button} onClick={dashboard}>Extended Forecast </button>
         </div>
     );

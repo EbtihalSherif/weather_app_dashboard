@@ -13,6 +13,7 @@ const getCurrentDayForecast = (data) => {
         temperature: CurrentDate.temp_C,
         weatherIcon: CurrentDate.weatherIconUrl[0].value,
         weatherDescription: CurrentDate.weatherDesc[0].value,
+        feelsLike: CurrentDate.FeelsLikeC
     }
 };
 

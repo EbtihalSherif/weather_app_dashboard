@@ -40,7 +40,6 @@
   -webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background: var(--yellow);
   background-color: var(--bg-color--card);
   background-image: var(--gradient);
 }
@@ -180,3 +179,5 @@
     justify-content: center;
   }
 }
+
+

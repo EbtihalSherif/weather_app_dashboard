@@ -1,7 +1,7 @@
 .error {
     bottom: 50%;
-    text-align: center;
-    align-items: center;
-margin-left:37%;
-margin-right: auto;    
+    
+vertical-align: middle;
+  display: inline-block;
+line-height: normal;
 }

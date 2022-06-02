@@ -37,3 +37,25 @@
     color: var(--glass);
     background-color: grey;
 }
+
+
+.weatherlistcard {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 600px) {
+    .weatherlistcard {
+        margin-top: 0.5rem;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .weatherlistcard {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

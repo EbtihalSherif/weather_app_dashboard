@@ -31,7 +31,7 @@
     box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     line-height: initial;
-    width: 30%;
+    width:  fit-content;
     height: 38px;
 
 }
