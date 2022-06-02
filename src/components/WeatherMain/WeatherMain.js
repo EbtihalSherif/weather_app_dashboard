@@ -42,7 +42,7 @@ function WeatherMain(props) {
       <Header />
       <div className={styles.cont}>
         {!forecast && (
-          <div className={`${styles.box} position-relative`}>
+          <div className={styles.weathercontainer}>
             {isLoading && <Loader />}
             {isError && <Error />}
           </div>

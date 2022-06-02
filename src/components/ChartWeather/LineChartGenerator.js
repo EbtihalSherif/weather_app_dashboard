@@ -21,8 +21,8 @@ const LineChartGenerator = ({ width, dataDay }) => {
     },
 
         svgDimensions = {
-            width: width < 567 ? views.smallViewWidth : views.largeViewWidth,
-            height: width < 567 ? views.smallViewHeight : views.largeViewHeight
+            width: width <= 559 ? views.smallViewWidth : views.largeViewWidth,
+            height: width <= 559 ? views.smallViewHeight : views.largeViewHeight
         };
     const data = dataDay
    
@@ -32,8 +32,7 @@ const LineChartGenerator = ({ width, dataDay }) => {
         day.time = i
         timeIntervals.push(i)
         i += 3
-    }
-    )
+    })
 
 
     const xScaleMinValue = Math.min(...data.map(d => d.time));

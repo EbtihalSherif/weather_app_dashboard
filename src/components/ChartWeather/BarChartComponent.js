@@ -15,8 +15,8 @@ const BarChartComponent = ({ width, dataDay }) => {
     },
 
         svgDimensions = {
-            width: width < 567 ? views.smallViewWidth : views.largeViewWidth,
-            height: width < 567 ? views.smallViewHeight : views.largeViewHeight
+            width: width <= 559 ? views.smallViewWidth : views.largeViewWidth,
+            height: width <= 559  ? views.smallViewHeight : views.largeViewHeight
         };
 
 

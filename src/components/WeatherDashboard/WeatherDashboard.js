@@ -40,7 +40,8 @@ export default function WeatherDashboard() {
     <React.Fragment>
       <Header />
       {!forecast && (
-        <div className={styles.weathercontainer}>  {isLoading && <Loader />}
+        <div className={styles.weathercontainer}> 
+         {isLoading && <Loader />}
           {isError && <Error />}
         </div>)}
       {forecast &&

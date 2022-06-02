@@ -1,19 +1,18 @@
-
 .heading {
-    padding: 2rem;
-    text-align: center;
-    font-weight: 900;
-    font-size: 2rem;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
 }
 
 @media (max-width: 567px) {
   .heading {
-   font-size: 1rem;
+    font-size: 1rem;
   }
 }
 
 .light {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 .wrapper {
@@ -22,7 +21,7 @@
   padding: 25px;
 }
 .barChart {
-    width: 50%;
+  width: 50%;
   margin-right: 0;
 }
 .barChart .axisLeft line {
@@ -32,7 +31,8 @@
 .barChart .axisLeft path {
   display: none;
 }
-.barChart .axisBottom line, .barChart .axisBottom path {
+.barChart .axisBottom line,
+.barChart .axisBottom path {
   display: none;
 }
 .barChart text {
@@ -106,29 +106,25 @@ text {
   margin-bottom: 10px;
 }
 
-@media (max-width: 567px) {
+@media (max-width: 690px) {
   .chartContainer {
     flex-basis: 100%;
     justify-content: center;
     flex-direction: column;
-
-    margin-left: auto;
-    margin-right: auto;
+    align-items: flex-start;
+    /* margin-left: auto;
+    margin-right: auto; */
   }
-}
-
-@media (max-width: 567px) {
   .lineChart {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    flex-basis: 50%;
   }
-}
-
-@media (max-width: 567px) {
   .barChart {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    flex-basis: 50%;
   }
 }
