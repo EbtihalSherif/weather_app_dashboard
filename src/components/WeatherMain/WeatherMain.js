@@ -7,8 +7,6 @@ import styles from './WeatherMain.module.css'
 import useForecast from '../../hooks/useForecast'
 import Loader from '../Loader/Loader'
 import Error from '../Error/Error'
-import { setCity } from '../../store/actions';
-import { dispatch } from 'd3';
 import { useSelector } from 'react-redux';
 
 function WeatherMain(props) {

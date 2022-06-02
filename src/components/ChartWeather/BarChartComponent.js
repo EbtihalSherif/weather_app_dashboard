@@ -1,12 +1,7 @@
-import React, { useEffect, useState, useRef, useLayoutEffect, useCallback } from "react";
 import * as d3 from "d3";
-import { useSelector, useDispatch } from 'react-redux'
 import "./chartWeather.css";
 
-import Tooltip from './Tooltip'
-import Line from './Line'
-import Area from './Area'
-import XYAxisLineChart from './XYAxisLineChart'
+
 import XYAxisBarChart from "./XYAxisBarChart";
 import Bar from "./Bar";
 
@@ -25,7 +20,7 @@ const BarChartComponent = ({ width, dataDay, selectedDayIndex }) => {
             height: 500 - margins.top - margins.bottom
         };
 
-        
+
     const data = dataDay
     // states.dayHourlyRate[selectedDayIndex]
     // console.log(data)

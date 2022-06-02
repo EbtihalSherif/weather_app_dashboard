@@ -1,10 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import Header from '../Header/Header';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import useForecast from '../../hooks/useForecast'
-import { Container, Row, Col } from 'react-bootstrap';
-import { setWeather, setHourlyRate, setCity } from '../../store/actions'
 
 import styles from './WeatherDasboard.module.css'
 import WeatherItem from './WeatherItem/WeatherItem'
@@ -16,7 +14,6 @@ export default function WeatherDashboard() {
 
   const { isError, isLoading, forecast, hourlyRate, data, getWeatherInfo } = useForecast();
   const [selected, setSelected] = useState(0);
-  const dispatch = useDispatch()
   const cityName = useSelector((state) => state.Reducer)
  
   useEffect(() => {
