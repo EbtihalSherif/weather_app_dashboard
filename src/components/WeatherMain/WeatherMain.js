@@ -52,7 +52,7 @@ function WeatherMain(props) {
           <div className={`${styles.box} position-relative`}>
             <CurrentDayForecast {...forecast.currentDay} AllowDetailedView={false} />
           </div>}
-        {forecast && data && <CitiesForecast currentCity={Weatherdata.selectedCity} country={data.nearest_area[0].country[0].value} />}
+        {<CitiesForecast currentCity={Weatherdata.selectedCity} country={data?.nearest_area[0].country[0].value||""} />}
       </div>
 
     </div>

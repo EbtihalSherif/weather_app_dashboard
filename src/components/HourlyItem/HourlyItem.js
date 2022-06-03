@@ -20,7 +20,7 @@ export const HourlyItem = ({  data, onClick }) => {
     var strTime = hours + ':00 '  + ampm;
     return strTime;
   }
-  const unitSymbol = "C" ;
+
   return (
     <div className="hourly-item" onClick={onClick}>
       <img
@@ -33,7 +33,7 @@ export const HourlyItem = ({  data, onClick }) => {
       </label>
       <label className="description">{data.weatherDesc[0].value}</label>
       <label className="min-max">
-        {data.tempC}°{unitSymbol} 
+        {data.tempC}°C
       </label>
     </div>
   );

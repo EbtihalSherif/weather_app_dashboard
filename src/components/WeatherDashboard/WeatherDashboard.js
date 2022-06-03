@@ -63,7 +63,6 @@ export default function WeatherDashboard() {
             <div>
               <ChartWeather selectedDayIndex={selected} dataDay={hourlyRate} />
             </div>}
-          {console.log(hourlyRate)}
           {hourlyRate &&
             <div>
               <HourlyForecast selectedDayIndex={selected} data={hourlyRate} />

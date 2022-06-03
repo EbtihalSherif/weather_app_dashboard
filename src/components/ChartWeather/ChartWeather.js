@@ -33,14 +33,13 @@ export default function ChartWeather({ selectedDayIndex, dataDay }) {
     // listen for resize changes, and detect dimensions again when they change
     window.addEventListener("resize", getSvgContainerSize);
     // cleanup event listener
-    console.log("rerendering")
     return () => window.removeEventListener("resize", getSvgContainerSize);
   }, []);
  
 
   return (
     <div>
-      <div className="heading">Temperature Dashboard</div>
+      <div className="heading">Today's Dashboard</div>
       <div ref={svgContainer} className="chartContainer">
         <div className="lineChart">
           {dataDay && <LineChartGenerator width={width} dataDay={dataDay[selectedDayIndex]}/>}

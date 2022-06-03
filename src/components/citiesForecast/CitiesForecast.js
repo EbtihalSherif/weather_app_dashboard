@@ -4,14 +4,12 @@ import { Country, City } from 'country-state-city';
 import styles from './CitiesForecast.module.css';
 import { setCity } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { DropdownButton, Dropdown } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
 // import countries from '../../countries.json'
 import * as countries from 'all-countries-and-cities-json';
 
 const CitiesForecast = ({ country, currentCity }) => {
     const Weatherdata = useSelector((state) => state.Reducer)
-
     const [countryCode, setCountryCode] = useState(null);
     const [AllCities, setCities] = useState([])
 
@@ -22,23 +20,12 @@ const CitiesForecast = ({ country, currentCity }) => {
         navigate("/dashboard");
     };
 
-    const search = (nameKey, myArray) => {
-        for (var i = 0; i < myArray.length; i++) {
-            if (myArray[i].name === nameKey) {
-                return myArray[i];
-            }
-        }
-    }
-
+    
 
     useEffect(() => {
-        const AllCountries = Country.getAllCountries()
-        console.log(AllCountries)
-        const selectedCountry = countries[country] || []
+       //get country cities from npm package for cities 
+       const selectedCountry = countries[country] || []
         console.log(selectedCountry)
-        // search(country, AllCountries)
-        setCountryCode(selectedCountry.isoCode)
-       // const cities = City.getCitiesOfCountry(selectedCountry.isoCode)
         setCities(selectedCountry)
     }, []);
 
@@ -46,7 +33,6 @@ const CitiesForecast = ({ country, currentCity }) => {
 
     const handleSelectedCity = (e) => {
         if (e.target.value) {
-
             dispatch(setCity(e.target.value))
         }
     }
@@ -58,7 +44,6 @@ const CitiesForecast = ({ country, currentCity }) => {
                 explore weather of {country} cities
             </div>
             <div>
-
                 <input type="text" id="txtAutoComplete" list="citiesList" className={styles.select} onChange={handleSelectedCity} />
                 {AllCities.length > 0 && <datalist id="citiesList">
                     {
@@ -67,7 +52,6 @@ const CitiesForecast = ({ country, currentCity }) => {
                     }
 
                 </datalist>}
-
             </div>
             <button type="submit" className={styles.button} onClick={dashboard}>Extended Forecast </button>
         </div>
