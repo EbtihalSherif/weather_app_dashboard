@@ -5,10 +5,8 @@ import "./HourlyItem.css";
 
 export const HourlyItem = ({  data, onClick }) => {
  
-  
 
   const addHours=(numOfHours, date = new Date())=> {
-    let currentDate = new Date().getHours
 
     date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
 

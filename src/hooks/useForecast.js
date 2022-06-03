@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Weather_APi_KEY, Wetaher_Api_URL } from '../constants/constants'
-import { useSelector, useDispatch } from 'react-redux'
-import { setWeather ,setHourlyRate,setCity} from '../store/actions'
 
 import getCurrentDayForecast from '../helpers/getCurrentDayForecast';
 import getCurrentDayDetailedForecast from '../helpers/getCurrentDayDetailedForecast';
@@ -14,22 +12,16 @@ const useForecast = () => {
     const [isError, setError] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [forecast, setForecast] = useState(null);
-    const [latLong, setLatLong] = useState(null);
     const [data, setData] = useState(null);
     const [hourlyRate, setHourly] = useState(null);
 
-    const dispatch = useDispatch()
 
 
     const fetchData = async (location = null) => {
 
         try{
-        // if (!location) {
-        //     navigator.geolocation.getCurrentPosition(function (position) {
-        //         setLatLong(position.coords.latitude + ',' + position.coords.longitude);
-        //     });
-        // }
-        if (latLong != null || location != null) {
+       
+        if ( location != null) {
 
             
             let { data } = await axios(Wetaher_Api_URL,
@@ -37,7 +29,7 @@ const useForecast = () => {
                     params:
                     {
                         key: Weather_APi_KEY,
-                        q: location || latLong,
+                        q: location ,
                         format: "json",
                         num_of_days: 5,
                         includelocation: "yes",
@@ -47,17 +39,7 @@ const useForecast = () => {
                         tp: 3,
                     }
                 })
-            // .then(({ data }) => {
-
-            //     setData(data.data)
-            //     dispatch(setWeather(data.data))
-            //     console.log(data);
-            //     return data.data
-
-            // }).catch(e => {
-            //     console.log(e);
-            // })
-
+           
             
             if (data.error) {
                 setError('Something went wrong');
@@ -67,7 +49,6 @@ const useForecast = () => {
             }
 
             setData(data.data)
-           //  dispatch(setWeather(data.data))
             console.log(data);
             return data.data;
 
@@ -91,7 +72,6 @@ const useForecast = () => {
         const upcomingDays = getUpcomingDaysForecast(data);
         const hourlyData=getHourlyData(data)
         setHourly(hourlyData)
-      //  dispatch(setHourlyRate(hourlyData))
         setForecast({ currentDay, currentDayDetails, upcomingDays });
         setLoading(false);
     };
