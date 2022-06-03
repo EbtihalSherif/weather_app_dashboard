@@ -10,12 +10,14 @@ import Error from '../Error/Error'
 import ChartWeather from '../ChartWeather/ChartWeather';
 import CurrentDayForecast from '../CurrentDayForecast/CurrentDayForecast';
 import UpcomingDays from '../UpcomingDaysForecast/UpcomingDays';
+import HourlyForecast from '../Hourlydata/HourlyForecast';
 
 export default function WeatherDashboard() {
 
   const { isError, isLoading, forecast, hourlyRate, data, getWeatherInfo } = useForecast();
   const [selected, setSelected] = useState(0);
   const cityName = useSelector((state) => state.Reducer)
+  const [latLong, setLatLong] = useState(null);
 
   useEffect(() => {
 
@@ -25,23 +27,27 @@ export default function WeatherDashboard() {
       }
 
       else {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          return position.coords.latitude + ',' + position.coords.longitude;
-        });
+        if (latLong == null) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            setLatLong(position.coords.latitude + ',' + position.coords.longitude);
+          });
+        }
+        else await getWeatherInfo(latLong)
+
       }
 
     }
-    fetchData();
+    fetchData(latLong);
 
-  }, [cityName.selectedCity]);
+  }, [cityName.selectedCity, latLong]);
 
 
   return (
     <React.Fragment>
       <Header />
       {!forecast && (
-        <div className={styles.weathercontainer}> 
-         {isLoading && <Loader />}
+        <div className={styles.weathercontainer}>
+          {isLoading && <Loader />}
           {isError && <Error />}
         </div>)}
       {forecast &&
@@ -50,14 +56,18 @@ export default function WeatherDashboard() {
           <CurrentDayForecast {...forecast.currentDay} currentDayDetails={forecast.currentDayDetails} AllowDetailedView={true} />
 
           {forecast.upcomingDays && <div className={styles.weatherlistcard}>
-            <UpcomingDays days={forecast.upcomingDays} selected={selected} setSelected={setSelected}/>
+            <UpcomingDays days={forecast.upcomingDays} selected={selected} setSelected={setSelected} />
           </div>}
 
           {hourlyRate &&
             <div>
               <ChartWeather selectedDayIndex={selected} dataDay={hourlyRate} />
             </div>}
-
+          {console.log(hourlyRate)}
+          {hourlyRate &&
+            <div>
+              <HourlyForecast selectedDayIndex={selected} data={hourlyRate} />
+            </div>}
 
         </div>
       }

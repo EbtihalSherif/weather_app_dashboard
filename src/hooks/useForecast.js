@@ -24,11 +24,11 @@ const useForecast = () => {
     const fetchData = async (location = null) => {
 
         try{
-        if (!location) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                setLatLong(position.coords.latitude + ',' + position.coords.longitude);
-            });
-        }
+        // if (!location) {
+        //     navigator.geolocation.getCurrentPosition(function (position) {
+        //         setLatLong(position.coords.latitude + ',' + position.coords.longitude);
+        //     });
+        // }
         if (latLong != null || location != null) {
 
             

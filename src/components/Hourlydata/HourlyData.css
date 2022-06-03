@@ -1,0 +1,45 @@
+.heading {
+  padding: 2rem;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.hourly {
+	grid-column: span 6;
+	grid-row: 5;
+	display: flex;
+	flex-direction: column;
+}
+
+.hourly .title {
+	color: white;
+	font-family: "Frank Ruhl Libre", serif;
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: -5px;
+}
+
+.hourly .hourly-items-container {
+	margin-top: 10px;
+}
+
+.hourly .hourly-items-container .hourly-item {
+	background-color:rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 5px 10px 0px  rgba(73, 71, 71, 0.7);;
+	height: 50px;
+	margin: 5px;
+	border-radius: 15px;
+	transition: background-color 0.25s ease;
+}
+
+.hourly .hourly-items-container .hourly-item-header {
+	height: 0;
+	transition: height 0.5s ease;
+	transform: 250ms;
+	overflow: hidden;
+}
+
+.hourly .hourly-items-container .hourly-item-header.active {
+	height: 130px;
+}

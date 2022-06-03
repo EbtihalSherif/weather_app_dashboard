@@ -1,0 +1,34 @@
+.hourly-item-details {
+  display: flex;
+  color: white;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+}
+
+.hourly-item-details .hourly-details-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 0;
+  column-gap: 15px;
+  padding: 5px 15px;
+}
+
+.hourly-item-details .hourly-details-grid .hourly-details-grid-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.hourly-item-details .hourly-details-grid .hourly-details-grid-item label:first-child {
+  color: whitesmoke;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+}
+
+.hourly-item-details .hourly-details-grid .hourly-details-grid-item label:last-child {
+  color: white;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+}
