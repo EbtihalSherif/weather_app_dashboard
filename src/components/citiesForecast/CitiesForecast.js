@@ -8,10 +8,10 @@ import { useNavigate } from "react-router-dom";
 // import countries from '../../countries.json'
 import * as countries from 'all-countries-and-cities-json';
 
-const CitiesForecast = ({ country, currentCity }) => {
-    const Weatherdata = useSelector((state) => state.Reducer)
-    const [countryCode, setCountryCode] = useState(null);
+const CitiesForecast = () => {
+    const country = useSelector((state) => {return state.Reducer.country})
     const [AllCities, setCities] = useState([])
+
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -25,9 +25,9 @@ const CitiesForecast = ({ country, currentCity }) => {
     useEffect(() => {
        //get country cities from npm package for cities 
        const selectedCountry = countries[country] || []
-        console.log(selectedCountry)
+        console.log("country name",country)
         setCities(selectedCountry)
-    }, []);
+    }, [country]);
 
 
 

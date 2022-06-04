@@ -7,7 +7,7 @@ import Axis from './Axis'
         translate: `translate(0,${svgDimensions.height - margins.bottom})`,
         scale: scales.xScale,
         tickSize: svgDimensions.height - margins.top - margins.bottom,
-        ticks:5 ,
+        ticks:8 ,
         className: 'axisBottom',
         padding: 10,
         format: null

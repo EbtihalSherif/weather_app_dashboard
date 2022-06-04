@@ -2,7 +2,7 @@ import {SET_CURRENT_CITY_WEATHER,SET_CURRENT_COUNTRY,SET_SELECTED_CITY,SET_HOURL
 
 
 const initState = {
-    county:null,
+    country:"",
     selectedCity: "",
     weatherData:{},
     dayHourlyRate:[]

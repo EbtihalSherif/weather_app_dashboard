@@ -7,8 +7,8 @@ import styles from './WeatherMain.module.css'
 import useForecast from '../../hooks/useForecast'
 import Loader from '../Loader/Loader'
 import Error from '../Error/Error'
-import { useSelector } from 'react-redux';
-
+import { useSelector ,useDispatch} from 'react-redux';
+import { setCountry } from '../../store/actions'
 function WeatherMain(props) {
   const [latLong, setLatLong] = useState(null);
   // const [data, setData] = useState(null);
@@ -18,6 +18,7 @@ function WeatherMain(props) {
   const { isError, isLoading, forecast, data, getWeatherInfo } = useForecast();
 
 
+  const dispatch=useDispatch()
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       setLatLong(position.coords.latitude + ',' + position.coords.longitude);
@@ -32,9 +33,15 @@ function WeatherMain(props) {
 
   useEffect(() => {
     fetchData()
-
   }
     , [latLong]);
+
+  useEffect(() => {
+    console.log("daataa",data)
+    data&&data.nearest_area&&
+      dispatch(setCountry(data?.nearest_area[0].country[0].value));
+  }
+    , [data, dispatch]);
 
 
   return (
@@ -52,7 +59,7 @@ function WeatherMain(props) {
           <div className={`${styles.box} position-relative`}>
             <CurrentDayForecast {...forecast.currentDay} AllowDetailedView={false} />
           </div>}
-        {<CitiesForecast currentCity={Weatherdata.selectedCity} country={data?.nearest_area[0].country[0].value||""} />}
+        <CitiesForecast />
       </div>
 
     </div>
