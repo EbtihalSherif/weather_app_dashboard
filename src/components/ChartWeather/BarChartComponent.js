@@ -3,6 +3,11 @@ import "./chartWeather.css";
 import XYAxisBarChart from "./XYAxisBarChart";
 import Bar from "./Bar";
 
+/**
+ * create bar chart based on container width and data of the day to chart
+ * @param {*} param0 
+ * @returns 
+ */
 
 const BarChartComponent = ({ width, dataDay }) => {
     const margins = {
@@ -43,7 +48,7 @@ const BarChartComponent = ({ width, dataDay }) => {
         .range([svgDimensions.height - margins.bottom, margins.top
         ])
     const text = (
-        <text transform="translate(20,20)rotate(0)" fontSize="13">Humidity</text>
+        <text transform="translate(20,20)rotate(0)" fontSize="13">Humidity Hourly Rate</text>
     )
     const rectOverlay = <rect transform={`translate(${margins.left / 2},${margins.top / 2})`}
         className="rectOverlayBarChart" width={svgDimensions.width - margins.right

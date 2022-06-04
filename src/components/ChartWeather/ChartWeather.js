@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useRef, useLayoutEffect, useCallback } from "react";
-import * as d3 from "d3";
-import { useSelector, useDispatch } from 'react-redux'
+import React, {  useState, useRef, useLayoutEffect } from "react";
 import "./chartWeather.css";
 
 import BarChartComponent from "./BarChartComponent";
@@ -11,23 +9,21 @@ export default function ChartWeather({ selectedDayIndex, dataDay }) {
 
   const svgContainer = useRef(null); // The PARENT of the SVG 
 
-  const states = useSelector((state) => state.Reducer)
-  // Maximum data value
 
 
   const [width, setWidth] = useState(1100);
-  const [height, setHeight] = useState(500);
 
 
   const getSvgContainerSize = () => {
     const newWidth = svgContainer.current.clientWidth;
-  
         setWidth(newWidth);
-    const newHeight = svgContainer.current.clientHeight;
-    setHeight(newHeight);
 };
 
-  useLayoutEffect(() => {
+/**
+ * to ensure all components are drawn to fetch the correct width
+ */
+
+useLayoutEffect(() => {
     // detect 'width' and 'height' on render
     getSvgContainerSize();
     // listen for resize changes, and detect dimensions again when they change

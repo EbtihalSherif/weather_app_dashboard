@@ -21,6 +21,11 @@ export default function WeatherDashboard() {
 
   useEffect(() => {
 
+  /**
+   * if a city is selected in weather main get its weather
+   * otherwise get dashboard data according to current weather
+   */
+
     const fetchData = async () => {
       if (cityName.selectedCity) {
         await getWeatherInfo(cityName.selectedCity)
@@ -42,6 +47,7 @@ export default function WeatherDashboard() {
   }, [cityName.selectedCity, latLong]);
 
 
+  
   return (
     <React.Fragment>
       <Header />

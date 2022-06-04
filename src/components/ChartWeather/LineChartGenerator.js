@@ -55,9 +55,7 @@ const LineChartGenerator = ({ width, dataDay }) => {
     var text = (
         <text  transform="translate(20,20)rotate(0)" fontSize="13"> temperature Hourly Rate </text>
     )
-    var xAxisLabel = (
-        <text transform="translate(20,20)rotate(0)" fontSize="13"> temperature Hourly Rate </text>
-    )
+   
     var rectOverlay = <rect transform={`translate(${margins.left / 2},${margins.top / 2})`} className="rectOverlayLineChart" width={svgDimensions.width - margins.right
     } height={svgDimensions.height - margins.top
     } rx="5" ry="5" />

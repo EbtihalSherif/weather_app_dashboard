@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Country, City } from 'country-state-city';
-//import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from './CitiesForecast.module.css';
 import { setCity } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-// import countries from '../../countries.json'
 import * as countries from 'all-countries-and-cities-json';
 
 const CitiesForecast = () => {
     const country = useSelector((state) => {return state.Reducer.country})
+
     const [AllCities, setCities] = useState([])
 
 
@@ -21,7 +19,6 @@ const CitiesForecast = () => {
     };
 
     
-
     useEffect(() => {
        //get country cities from npm package for cities 
        const selectedCountry = countries[country] || []

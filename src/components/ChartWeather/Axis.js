@@ -2,9 +2,13 @@ import React, { useEffect, useRef } from 'react';
 
 import * as d3 from "d3";
 
+/**
+ * genearte x ,y axis for charts
+ * @param {*} props 
+ * @returns 
+ */
 const Axis = (props) => {
     let axisElement = useRef()
-   // var axisElement = null
 
     useEffect(() => {
         renderAxis()

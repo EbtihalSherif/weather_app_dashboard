@@ -3,13 +3,17 @@ import styles from './CurrentDay.module.css';
 import PropTypes from 'prop-types';
 import locationIcon from './assets/location-pin.png';
 
-export default function CurrentDayForecast({ weekday, date, location, temperature, weatherIcon, weatherDescription,feelsLike,currentDayDetails,AllowDetailedView }) {
-  
-    const CurrentDay = (<div className={`${AllowDetailedView ? styles.weathermore :styles.cardInner} d-flex flex-column justify-content-between pt-3 pb-2 pl-2`}>
+/**
+ * re usable component for detailed or simple forecast views 
+ */
+export default function CurrentDayForecast({ weekday, date, location, temperature, weatherIcon, weatherDescription, feelsLike, currentDayDetails, AllowDetailedView }) {
+
+
+    const CurrentDay = (<div className={`${AllowDetailedView ? styles.weathermore : styles.cardInner} d-flex flex-column justify-content-between pt-3 pb-2 pl-2`}>
         <div>
-            <h2 className={`${AllowDetailedView ? styles.weatherWeekDay :"font-weight-bold"} mb-1`}>{weekday}</h2>
+            <h2 className={`${AllowDetailedView ? styles.weatherWeekDay : "font-weight-bold"} mb-1`}>{weekday}</h2>
             <p className="mb-0">{date}</p>
-           {!AllowDetailedView&& <p className="d-flex align-items-baseline font-weight-lighter mb-1">
+            {!AllowDetailedView && <p className="d-flex align-items-baseline font-weight-lighter mb-1">
                 <img width="10" height="15" src={locationIcon} className="mr-1" alt="location pin icon" />
                 <span>{location}</span>
             </p>}
@@ -25,20 +29,23 @@ export default function CurrentDayForecast({ weekday, date, location, temperatur
             <h5 className="font-weight-lighter">{weatherDescription}</h5>
         </div>
     </div>)
-    return(
- <>
 
-      {!AllowDetailedView&& 
-      
-      <div className="d-flex">
-            {/* <div className={styles.gradient}></div> */}
-            {CurrentDay}
-        </div>}
 
-        {AllowDetailedView&&
+
+    return (
+        <>
+
+            {!AllowDetailedView &&
+
+                <div className="d-flex">
+                    {/* <div className={styles.gradient}></div> */}
+                    {CurrentDay}
+                </div>}
+
+            {AllowDetailedView &&
                 <div className={styles.weathermain}>
                     <div className={styles.weatherdata}>
-                       {CurrentDay}
+                        {CurrentDay}
                         <div className={styles.weatherinfo}>
                             <div className={styles.weathercity}>
                                 <span>{location}</span>
@@ -55,7 +62,7 @@ export default function CurrentDayForecast({ weekday, date, location, temperatur
                     </div>
                 </div >}
         </>
-         );  
+    );
 }
 CurrentDayForecast.propTypes = {
     weekday: PropTypes.string.isRequired,

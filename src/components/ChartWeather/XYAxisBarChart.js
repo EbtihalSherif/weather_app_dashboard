@@ -1,6 +1,11 @@
 import React from 'react'
-import * as d3 from "d3";
 import Axis from './Axis'
+
+/**
+ * handle x,y axis configs
+ * @param {*} param0 
+ * @returns 
+ */
 const XYAxisBarChart = ({ scales, margins, svgDimensions
 }) => {
     const xAxisProps = {

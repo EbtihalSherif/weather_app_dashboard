@@ -1,6 +1,11 @@
 import React from 'react'
 import * as d3 from "d3";
 
+/**
+ * generate line chart for data of the selected day
+ * @param {scales,data} param0 
+ * @returns 
+ */
 const Line = ({ scales, data}) => {
     const { xScale, yScale} = scales;
     const line = d3.line()
@@ -13,8 +18,7 @@ const Line = ({ scales, data}) => {
         <path d={line(data)}
             stroke="#1a4dc4"
             strokeWidth="3px"
-            fill="none"
-        />
+            fill="none"/>
     return (
         <g>{path}</g>
     )

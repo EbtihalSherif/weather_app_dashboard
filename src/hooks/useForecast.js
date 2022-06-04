@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Weather_APi_KEY, Wetaher_Api_URL } from '../constants/constants'
 
@@ -8,6 +8,11 @@ import getUpcomingDaysForecast from '../helpers/getUpcomingDaysForecast';
 import getHourlyData from '../helpers/getHourlyData';
 
 
+/**
+ * custom hook for forecast data
+ * @returns
+ */
+
 const useForecast = () => {
     const [isError, setError] = useState(false);
     const [isLoading, setLoading] = useState(false);
@@ -16,7 +21,11 @@ const useForecast = () => {
     const [hourlyRate, setHourly] = useState(null);
 
 
-
+/**
+ * fetch data from weather api 
+ * @param {*} location 
+ * @returns 
+ */
     const fetchData = async (location = null) => {
 
         try{
@@ -65,6 +74,10 @@ const useForecast = () => {
     }
 
 
+    /**
+     * construct weather data according to later use in different components
+     * @param {*} data 
+     */
 
     const gatherForecastData = data => {
         const currentDay = getCurrentDayForecast(data);
@@ -75,6 +88,11 @@ const useForecast = () => {
         setForecast({ currentDay, currentDayDetails, upcomingDays });
         setLoading(false);
     };
+
+
+    /**
+     * main function for fetching and construction of data to be called from other componenst
+     */
 
     const getWeatherInfo = async location => {
         setLoading(true);
@@ -90,29 +108,13 @@ const useForecast = () => {
         gatherForecastData(data);
     };
 
-//     useEffect(()  => {
-//     const regetData= async () =>{
-//         if (!cityName.selectedCity) {
-//             setLoading(true);
-//             setError(false);
-
-//             //default fetch...
-//             const data =await fetchData();
-//             if (!data) return;
-
-//             gatherForecastData(data);
-//     };
-//         regetData()
-// }
-//     }, [cityName.selectedCity,latLong]);
-
     return {
         isError,
         isLoading,
         forecast,
         data,
         hourlyRate,
-        getWeatherInfo,
+        getWeatherInfo
     };
 };
 

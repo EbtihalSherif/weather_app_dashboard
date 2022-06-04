@@ -2,15 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 
 
-
+/**
+ * line chart tooltip on hover over the line chart diagram
+ */
 const Tooltip = (props) => {
 
 
     const [time, setTime] = useState('')
-    // const [tooltip, setTooltip] = useState(null)
-    //const [overlay, setOverlay] = useState(null)
-
-
+  
     const { svgDimensions, scales, margins, data } = props;
     const { xScale, yScale } = scales;
     let bisectMouseValue = d3.bisector((d) => d.time).left;

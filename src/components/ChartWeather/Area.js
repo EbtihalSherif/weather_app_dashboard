@@ -1,6 +1,11 @@
 import React from 'react'
 import * as d3 from "d3";
 
+/**
+ * generate area for line chart data
+ * @param {*} param0 
+ * @returns 
+ */
  const Area = ({ scales, data, svgDimensions, margins}) => {
     const { xScale, yScale
     } = scales;
@@ -17,28 +22,23 @@ import * as d3 from "d3";
             x1="0"
             y1={yScale(0)}
             x2="0"
-            y2={yScale(1000)}
-        >
+            y2={yScale(1000)}>
             <stop
                 offset="0%"
                 stopColor="#333333"
-                stopOpacity="0"
-            >
+                stopOpacity="0">
             </stop>
             <stop
                 offset="100%"
                 stopColor="#1a4dc4"
-                stopOpacity="0.5"
-            >
+                stopOpacity="0.5">
             </stop>
         </linearGradient>
 
     const path =
         <path
-            d={area(data)
-            }
-            className="area"
-        />
+            d={area(data)}
+            className="area"/>
     return (
         <g>{areaGradient }{path}</g>
     )

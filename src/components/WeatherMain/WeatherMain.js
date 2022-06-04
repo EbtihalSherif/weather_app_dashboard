@@ -7,18 +7,19 @@ import styles from './WeatherMain.module.css'
 import useForecast from '../../hooks/useForecast'
 import Loader from '../Loader/Loader'
 import Error from '../Error/Error'
-import { useSelector ,useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { setCountry } from '../../store/actions'
-function WeatherMain(props) {
-  const [latLong, setLatLong] = useState(null);
-  // const [data, setData] = useState(null);
 
-  const Weatherdata = useSelector((state) => state.Reducer)
+function WeatherMain() {
+  const [latLong, setLatLong] = useState(null);
 
   const { isError, isLoading, forecast, data, getWeatherInfo } = useForecast();
 
-
   const dispatch=useDispatch()
+
+  /**
+   * fetch location data according to location 
+   */
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       setLatLong(position.coords.latitude + ',' + position.coords.longitude);
@@ -31,11 +32,19 @@ function WeatherMain(props) {
 
   }
 
+  /**
+   * refetch weather data if location is changed
+   */
   useEffect(() => {
     fetchData()
   }
     , [latLong]);
 
+
+
+    /**
+     * if country changed update country name 
+     */
   useEffect(() => {
     console.log("daataa",data)
     data&&data.nearest_area&&
